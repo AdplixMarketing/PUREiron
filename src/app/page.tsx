@@ -11,27 +11,22 @@ import MarqueeTicker from '@/components/MarqueeTicker';
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0A0E 25%, #0A0A0A 50%, #0E0A1A 75%, #0A0A0A 100%)',
-          backgroundSize: '400% 400%',
-          animation: 'gradient-shift 15s ease infinite',
-        }}
-      />
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/video/hero.mp4" type="video/mp4" />
+      </video>
 
-      {/* Radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,30,58,0.15)_0%,transparent_70%)]" />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-iron-black/60" />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Red radial glow over video */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,30,58,0.12)_0%,transparent_70%)]" />
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.div
