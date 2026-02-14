@@ -26,7 +26,6 @@ export const products: Product[] = [
       '/products/code1-compression/front.png',
       '/products/code1-compression/detail.png',
       '/products/code1-compression/back.png',
-      '/products/code1-compression/pose.png',
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     soldOut: ['S', 'XL', 'XXL'],
