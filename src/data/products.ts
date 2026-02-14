@@ -9,9 +9,29 @@ export interface Product {
   sizes: string[];
   featured: boolean;
   badge?: string;
+  imageBlend?: boolean;
 }
 
 export const products: Product[] = [
+  // CODE 1 Compression — Best Seller
+  {
+    id: '13',
+    slug: 'code-1-compression',
+    name: 'CODE 1 Compression',
+    price: 59.99,
+    description: 'Engineered for the relentless. The CODE 1 Compression top delivers a second-skin fit with four-way stretch fabric and targeted compression zones that promote blood flow and reduce muscle fatigue. Featuring signature red accent stitching, the embroidered PUREiron logo on the chest, and bold vertical branding down the spine. Built for heavy lifts, intense sessions, and everything in between.',
+    collection: 'hoodies-tops',
+    images: [
+      '/products/code1-compression/front.png',
+      '/products/code1-compression/detail.png',
+      '/products/code1-compression/back.png',
+      '/products/code1-compression/pose.png',
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    featured: true,
+    badge: 'Best Seller',
+    imageBlend: true,
+  },
   // Hoodies & Tops
   {
     id: '1',
