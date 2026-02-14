@@ -53,18 +53,13 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
           onClick={(e) => e.stopPropagation()}
         >
           {/* Image */}
-          <div className="relative aspect-square bg-iron-gray">
+          <div className="relative aspect-square">
             <Image
               src={product.images[0]}
               alt={product.name}
               fill
-              className={product.imageBlend ? 'object-contain object-[center_20%]' : 'object-cover'}
+              className="object-cover"
             />
-            {product.imageBlend && (
-              <div className="absolute inset-0 pointer-events-none" style={{
-                background: 'radial-gradient(ellipse at center, transparent 30%, rgba(26,26,26,0.5) 60%, #1A1A1A 85%)'
-              }} />
-            )}
           </div>
 
           {/* Info */}
