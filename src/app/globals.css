@@ -11,12 +11,6 @@
   --font-body: var(--font-inter);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -25,7 +19,6 @@ body {
   background-color: #0A0A0A;
   color: #F5F5F5;
   font-family: var(--font-body), sans-serif;
-  overflow-x: hidden;
 }
 
 /* Noise texture overlay */

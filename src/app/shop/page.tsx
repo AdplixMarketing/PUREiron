@@ -31,13 +31,13 @@ export default function ShopPage() {
   }, [activeCollection, sortBy]);
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pt-32 pb-24">
       {/* Page header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
             Full Arsenal
@@ -52,7 +52,7 @@ export default function ShopPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/5"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 pb-8 border-b border-white/5"
         >
           {/* Collection filter */}
           <div className="flex flex-wrap gap-2">
@@ -95,12 +95,12 @@ export default function ShopPage() {
         </motion.div>
 
         {/* Results count */}
-        <p className="text-iron-white/40 text-sm mb-6">
+        <p className="text-iron-white/40 text-sm mb-8">
           {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}
         </p>
 
         {/* Product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}

@@ -105,14 +105,14 @@ function FeaturedProducts() {
   const featured = getFeaturedProducts();
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-32 lg:py-40 px-6 sm:px-10 lg:px-16 max-w-[1400px] mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-20"
       >
-        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
+        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-4">
           Top Picks
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-iron-white uppercase">
@@ -120,8 +120,8 @@ function FeaturedProducts() {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featured.map((product) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {featured.slice(0, 6).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
@@ -130,11 +130,11 @@ function FeaturedProducts() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-center mt-12"
+        className="text-center mt-16"
       >
         <Link
           href="/shop"
-          className="inline-block border border-white/20 hover:border-iron-red text-iron-white/70 hover:text-iron-red font-heading uppercase tracking-wider text-sm px-8 py-3 rounded-lg transition-all"
+          className="inline-block border border-white/20 hover:border-iron-red text-iron-white/70 hover:text-iron-red font-heading uppercase tracking-wider text-sm px-10 py-4 rounded-lg transition-all"
         >
           View All Products
         </Link>
@@ -145,14 +145,14 @@ function FeaturedProducts() {
 
 function CategoryShowcase() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-32 lg:py-40 px-6 sm:px-10 lg:px-16 max-w-[1400px] mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-20"
       >
-        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
+        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-4">
           Collections
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-iron-white uppercase">
@@ -160,7 +160,7 @@ function CategoryShowcase() {
         </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {collections.map((collection, i) => (
           <motion.div
             key={collection.slug}
@@ -201,8 +201,8 @@ function CategoryShowcase() {
 
 function BrandTeaser() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="py-32 lg:py-40 px-6 sm:px-10 lg:px-16 max-w-[1400px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}

@@ -48,8 +48,8 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 pb-24">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-iron-white/40 mb-8">
           <Link href="/shop" className="hover:text-iron-red transition-colors">Shop</Link>
@@ -57,7 +57,7 @@ export default function ProductDetailPage() {
           <span className="text-iron-white/70">{product.name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
           {/* Image gallery */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -172,11 +172,11 @@ export default function ProductDetailPage() {
 
         {/* Related products */}
         {relatedProducts.length > 0 && (
-          <section className="mt-24">
-            <h2 className="font-heading text-2xl font-bold text-iron-white uppercase mb-8">
+          <section className="mt-32">
+            <h2 className="font-heading text-2xl font-bold text-iron-white uppercase mb-12">
               You May Also Like
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {relatedProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

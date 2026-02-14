@@ -28,12 +28,12 @@ export default function CollectionPage() {
   }
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 pb-24">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
             Collection
@@ -44,7 +44,7 @@ export default function CollectionPage() {
           <p className="text-iron-white/50 mt-4 max-w-xl mx-auto">{collection.description}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {products.map((product) => (
             <ProductCard
               key={product.id}

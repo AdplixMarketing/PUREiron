@@ -20,7 +20,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
       className="group relative"
     >
       <Link href={`/shop/${product.slug}`} className="block">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-iron-gray">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-iron-gray">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -52,11 +52,11 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           )}
         </div>
 
-        <div className="mt-4 space-y-1">
+        <div className="mt-5 space-y-1.5">
           <h3 className="font-heading text-base font-medium text-iron-white group-hover:text-iron-red transition-colors">
             {product.name}
           </h3>
-          <p className="text-iron-white/60 text-sm">${product.price.toFixed(2)}</p>
+          <p className="text-iron-white/50 text-sm">${product.price.toFixed(2)}</p>
         </div>
       </Link>
     </motion.div>

@@ -88,12 +88,12 @@ export default function CartPage() {
   const shipping = totalPrice >= 100 ? 0 : 9.99;
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 pb-24">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
             Your Gear
@@ -118,9 +118,9 @@ export default function CartPage() {
             </Link>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Items */}
-            <div className="lg:col-span-2 space-y-4">
+            <div className="lg:col-span-2 space-y-5">
               <AnimatePresence>
                 {items.map((item) => (
                   <motion.div
@@ -129,7 +129,7 @@ export default function CartPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20, height: 0 }}
-                    className="flex gap-4 bg-iron-dark rounded-xl p-4 border border-white/5"
+                    className="flex gap-5 bg-iron-dark rounded-xl p-5 border border-white/5"
                   >
                     <Link href={`/shop/${item.slug}`} className="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                       <Image src={item.image} alt={item.name} fill className="object-cover" sizes="96px" />

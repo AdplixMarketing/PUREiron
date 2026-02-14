@@ -56,12 +56,12 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-32 pb-24">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
             Knowledge Base
@@ -79,7 +79,7 @@ export default function BlogPage() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-2xl mb-12 cursor-pointer"
+          className="group relative overflow-hidden rounded-2xl mb-16 cursor-pointer"
         >
           <div className="relative aspect-[21/9]">
             <Image
@@ -104,7 +104,7 @@ export default function BlogPage() {
         </motion.article>
 
         {/* Post grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {blogPosts.slice(1).map((post, i) => (
             <motion.article
               key={post.slug}
