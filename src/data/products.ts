@@ -10,6 +10,7 @@ export interface Product {
   featured: boolean;
   badge?: string;
   imageBlend?: boolean;
+  soldOut?: string[];
 }
 
 export const products: Product[] = [
@@ -28,6 +29,7 @@ export const products: Product[] = [
       '/products/code1-compression/pose.png',
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    soldOut: ['S', 'XL', 'XXL'],
     featured: true,
     badge: 'Best Seller',
     imageBlend: true,

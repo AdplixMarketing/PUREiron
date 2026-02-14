@@ -93,19 +93,25 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
             <div className="mt-4">
               <p className="text-xs uppercase tracking-wider text-iron-white/50 mb-2">Size</p>
               <div className="flex flex-wrap gap-2">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={`px-3 py-1.5 text-sm rounded-lg border transition-all ${
-                      selectedSize === size
-                        ? 'border-iron-red bg-iron-red/20 text-iron-red'
-                        : 'border-white/10 text-iron-white/60 hover:border-white/30'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
+                {product.sizes.map((size) => {
+                  const isSoldOut = product.soldOut?.includes(size);
+                  return (
+                    <button
+                      key={size}
+                      onClick={() => !isSoldOut && setSelectedSize(size)}
+                      disabled={isSoldOut}
+                      className={`px-3 py-1.5 text-sm rounded-lg border transition-all ${
+                        isSoldOut
+                          ? 'border-white/5 text-iron-white/20 line-through cursor-not-allowed'
+                          : selectedSize === size
+                          ? 'border-iron-red bg-iron-red/20 text-iron-red'
+                          : 'border-white/10 text-iron-white/60 hover:border-white/30'
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

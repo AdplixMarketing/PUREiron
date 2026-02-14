@@ -133,19 +133,25 @@ export default function ProductDetailPage() {
                 Size {selectedSize && <span className="text-iron-red">— {selectedSize}</span>}
               </p>
               <div className="flex flex-wrap gap-3">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={`min-w-[48px] px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
-                      selectedSize === size
-                        ? 'border-iron-red bg-iron-red/20 text-iron-red'
-                        : 'border-white/10 text-iron-white/60 hover:border-white/30 hover:text-iron-white'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
+                {product.sizes.map((size) => {
+                  const isSoldOut = product.soldOut?.includes(size);
+                  return (
+                    <button
+                      key={size}
+                      onClick={() => !isSoldOut && setSelectedSize(size)}
+                      disabled={isSoldOut}
+                      className={`min-w-[48px] px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
+                        isSoldOut
+                          ? 'border-white/5 text-iron-white/20 line-through cursor-not-allowed'
+                          : selectedSize === size
+                          ? 'border-iron-red bg-iron-red/20 text-iron-red'
+                          : 'border-white/10 text-iron-white/60 hover:border-white/30 hover:text-iron-white'
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
