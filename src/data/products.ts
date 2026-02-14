@@ -9,6 +9,7 @@ export interface Product {
   sizes: string[];
   featured: boolean;
   badge?: string;
+  imageBlend?: boolean;
 }
 
 export const products: Product[] = [
@@ -29,6 +30,7 @@ export const products: Product[] = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     featured: true,
     badge: 'Best Seller',
+    imageBlend: true,
   },
   // Hoodies & Tops
   {

@@ -25,9 +25,19 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
             src={product.images[0]}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className={`transition-transform duration-500 group-hover:scale-110 object-cover ${
+              product.imageBlend ? 'object-[center_15%]' : ''
+            }`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
+          {product.imageBlend && (
+            <div className="absolute inset-0 pointer-events-none" style={{
+              background: `
+                radial-gradient(ellipse at center, transparent 25%, rgba(26,26,26,0.4) 55%, #1A1A1A 80%),
+                linear-gradient(to bottom, rgba(26,26,26,0.6) 0%, transparent 15%, transparent 75%, rgba(26,26,26,0.8) 100%)
+              `
+            }} />
+          )}
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-iron-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

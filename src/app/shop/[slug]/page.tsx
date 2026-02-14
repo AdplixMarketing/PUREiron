@@ -69,10 +69,18 @@ export default function ProductDetailPage() {
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className={`${product.imageBlend ? 'object-contain object-[center_20%]' : 'object-cover'}`}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
+              {product.imageBlend && (
+                <div className="absolute inset-0 pointer-events-none" style={{
+                  background: `
+                    radial-gradient(ellipse at center, transparent 30%, rgba(26,26,26,0.5) 60%, #1A1A1A 85%),
+                    linear-gradient(to bottom, rgba(26,26,26,0.5) 0%, transparent 12%, transparent 80%, rgba(26,26,26,0.7) 100%)
+                  `
+                }} />
+              )}
               {product.badge && (
                 <span className="absolute top-4 left-4 bg-iron-red text-white text-xs font-heading uppercase tracking-wider px-3 py-1 rounded-full">
                   {product.badge}
@@ -89,7 +97,13 @@ export default function ProductDetailPage() {
                     selectedImage === i ? 'border-iron-red' : 'border-transparent opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <Image src={img} alt={`${product.name} ${i + 1}`} fill className="object-cover" sizes="80px" />
+                  <Image
+                    src={img}
+                    alt={`${product.name} ${i + 1}`}
+                    fill
+                    className={product.imageBlend ? 'object-cover object-[center_15%]' : 'object-cover'}
+                    sizes="80px"
+                  />
                 </button>
               ))}
             </div>
