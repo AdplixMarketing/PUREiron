@@ -17,7 +17,7 @@ function HeroSection() {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
+        className="absolute inset-0 w-full h-full object-cover object-[center_15%]"
       >
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
