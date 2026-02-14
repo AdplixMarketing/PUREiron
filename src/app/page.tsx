@@ -1,65 +1,268 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+import { getFeaturedProducts } from '@/data/products';
+import { collections } from '@/data/collections';
+import ProductCard from '@/components/ProductCard';
+import MarqueeTicker from '@/components/MarqueeTicker';
+
+function HeroSection() {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated gradient background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0A0E 25%, #0A0A0A 50%, #0E0A1A 75%, #0A0A0A 100%)',
+          backgroundSize: '400% 400%',
+          animation: 'gradient-shift 15s ease infinite',
+        }}
+      />
+
+      {/* Radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,30,58,0.15)_0%,transparent_70%)]" />
+
+      {/* Grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <p className="font-heading text-sm md:text-base uppercase tracking-[0.3em] text-iron-red mb-6">
+            Forged for the Relentless
+          </p>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] text-iron-white"
+        >
+          Train
+          <br />
+          <span className="text-iron-red">Harder</span>
+          <br />
+          Than Yesterday
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-iron-white/60 text-lg md:text-xl max-w-2xl mx-auto mt-8"
+        >
+          Premium athletic wear engineered for peak performance. Every fiber built to push limits.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+        >
+          <Link
+            href="/shop"
+            className="inline-block bg-iron-red hover:bg-iron-red-light text-white font-heading uppercase tracking-wider text-sm px-10 py-4 rounded-lg transition-all hover:shadow-[0_0_30px_rgba(196,30,58,0.4)]"
+          >
+            Shop Collection
+          </Link>
+          <Link
+            href="/about"
+            className="inline-block border border-white/20 hover:border-iron-red text-iron-white font-heading uppercase tracking-wider text-sm px-10 py-4 rounded-lg transition-all hover:text-iron-red"
+          >
+            Our Story
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
+          <div className="w-1 h-2 rounded-full bg-iron-red" />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function FeaturedProducts() {
+  const featured = getFeaturedProducts();
+
+  return (
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
+          Top Picks
+        </p>
+        <h2 className="font-heading text-4xl md:text-5xl font-bold text-iron-white uppercase">
+          Featured Gear
+        </h2>
+      </motion.div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featured.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-center mt-12"
+      >
+        <Link
+          href="/shop"
+          className="inline-block border border-white/20 hover:border-iron-red text-iron-white/70 hover:text-iron-red font-heading uppercase tracking-wider text-sm px-8 py-3 rounded-lg transition-all"
+        >
+          View All Products
+        </Link>
+      </motion.div>
+    </section>
+  );
+}
+
+function CategoryShowcase() {
+  return (
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-3">
+          Collections
+        </p>
+        <h2 className="font-heading text-4xl md:text-5xl font-bold text-iron-white uppercase">
+          Shop by Category
+        </h2>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {collections.map((collection, i) => (
+          <motion.div
+            key={collection.slug}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15 }}
+          >
+            <Link
+              href={`/collections/${collection.slug}`}
+              className="group block relative aspect-[4/5] overflow-hidden rounded-xl"
+            >
+              <Image
+                src={collection.image}
+                alt={collection.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-iron-black via-iron-black/30 to-transparent" />
+              <div className="absolute inset-0 border border-white/0 group-hover:border-iron-red/50 rounded-xl transition-all duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="font-heading text-2xl font-bold text-iron-white uppercase group-hover:text-iron-red transition-colors">
+                  {collection.name}
+                </h3>
+                <p className="text-iron-white/50 text-sm mt-1">{collection.description}</p>
+                <span className="inline-block mt-3 text-iron-red text-sm font-heading uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                  Explore &rarr;
+                </span>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BrandTeaser() {
+  return (
+    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative aspect-square rounded-2xl overflow-hidden"
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"
+            alt="PUREiron brand"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-iron-black/50 to-transparent" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <p className="font-heading text-sm uppercase tracking-[0.3em] text-iron-red mb-4">
+            The Brand
+          </p>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-iron-white uppercase leading-tight">
+            Born in the
+            <br />
+            <span className="text-iron-red">Iron Paradise</span>
+          </h2>
+          <p className="text-iron-white/60 text-lg leading-relaxed mt-6">
+            PUREiron was forged from a simple belief: your gear should work as hard as you do.
+            We design every piece for athletes who refuse to settle — from the fabric selection
+            to the final stitch, everything is engineered for performance.
+          </p>
+          <p className="text-iron-white/60 text-lg leading-relaxed mt-4">
+            No gimmicks. No shortcuts. Just pure, relentless quality.
+          </p>
+          <Link
+            href="/about"
+            className="inline-block mt-8 border border-iron-red text-iron-red hover:bg-iron-red hover:text-white font-heading uppercase tracking-wider text-sm px-8 py-3 rounded-lg transition-all"
+          >
+            Read Our Story
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <HeroSection />
+      <MarqueeTicker />
+      <FeaturedProducts />
+      <CategoryShowcase />
+      <BrandTeaser />
+      <MarqueeTicker />
+    </>
   );
 }
